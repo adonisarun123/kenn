@@ -51,8 +51,8 @@ export default function Join() {
             
             <div className="bg-primary-mist rounded-3xl p-8 text-center border-2 border-primary-green">
               <Star className="mx-auto mb-4 text-primary-green" size={48} />
-              <h3 className="font-bold text-lg mb-2 text-primary-black">1% Referral</h3>
-              <p className="text-sm text-primary-sage">1% referral on service fees</p>
+              <h3 className="font-bold text-lg mb-2 text-primary-black">3% Referral</h3>
+              <p className="text-sm text-primary-sage">3% referral on the plot cost (founding members only)</p>
             </div>
             
             <div className="bg-gradient-to-br from-primary-clay to-primary-green text-primary-white rounded-3xl p-8 text-center">
