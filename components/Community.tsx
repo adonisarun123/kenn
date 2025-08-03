@@ -107,7 +107,7 @@ export default function Community() {
               <div className="bg-gradient-to-br from-primary-clay to-primary-green text-primary-white rounded-3xl p-8 text-center">
                 <TrendingUp className="mx-auto mb-4" size={48} />
                 <h4 className="text-xl font-bold mb-3">At-Cost Development</h4>
-                <p className="opacity-90">Only 10% operational fee, no agent commissions.</p>
+                <p className="opacity-90">Only 10% service fee, no agent commissions.</p>
               </div>
             </div>
           </div>
