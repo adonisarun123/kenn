@@ -14,9 +14,9 @@ export default function ApplicationForm() {
     linkedin: '',
     
     // Section 2 - Wellness Lifestyle
-    wellnessPractices: [],
+    wellnessPractices: [] as string[],
     healthExperience: '',
-    wellnessThemes: [],
+    wellnessThemes: [] as string[],
     wellnessThemesOther: '',
     
     // Section 3 - Time & Engagement
@@ -60,7 +60,7 @@ export default function ApplicationForm() {
     'Other'
   ]
 
-  const handleCheckboxChange = (field: string, value: string) => {
+  const handleCheckboxChange = (field: 'wellnessPractices' | 'wellnessThemes', value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: prev[field].includes(value)
