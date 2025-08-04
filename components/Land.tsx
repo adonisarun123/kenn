@@ -108,7 +108,7 @@ export default function WhoShouldJoin() {
           </div>
 
           {/* Call to Action */}
-          <div className="bg-gradient-to-br from-primary-green to-primary-clay rounded-3xl p-8 md:p-12 text-primary-white text-center">
+          <div className="bg-primary-green rounded-3xl p-8 md:p-12 text-primary-white text-center shadow-lg">
             <h3 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to Reclaim Your Time, Body, and Mental Peace?
             </h3>

@@ -38,7 +38,7 @@ export default function Join() {
               🎯 Our Mission
             </h2>
             
-            <div className="bg-gradient-to-br from-primary-green to-primary-clay rounded-3xl p-8 md:p-12 text-primary-white mb-12">
+            <div className="bg-primary-green rounded-3xl p-8 md:p-12 text-primary-white mb-12 shadow-lg">
               <blockquote className="text-2xl md:text-3xl font-bold leading-relaxed mb-6">
                 "To co-create India's most trusted and transparent health-forward living collective — away from the city, without losing touch with progress."
               </blockquote>
@@ -85,7 +85,7 @@ export default function Join() {
 
           {/* Founding Circle Privileges */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-gradient-to-br from-primary-green to-primary-clay text-primary-white rounded-3xl p-8 text-center">
+            <div className="bg-primary-green text-primary-white rounded-3xl p-8 text-center shadow-lg">
               <Crown className="mx-auto mb-4" size={48} />
               <h3 className="font-bold text-xl mb-3">Priority Plot Allocation</h3>
               <p className="opacity-90 leading-relaxed">First choice on the best-located plots within the 30-acre community — prime positions with optimal views and accessibility.</p>
@@ -97,7 +97,7 @@ export default function Join() {
               <p className="text-primary-sage leading-relaxed">Get <span className="font-bold text-primary-green">5% off your service charge</span> for every qualifying member you successfully refer to the community.</p>
             </div>
             
-            <div className="bg-gradient-to-br from-primary-clay to-primary-green text-primary-white rounded-3xl p-8 text-center">
+            <div className="bg-primary-clay text-primary-white rounded-3xl p-8 text-center shadow-lg">
               <Users className="mx-auto mb-4" size={48} />
               <h3 className="font-bold text-xl mb-3">Charter Council</h3>
               <p className="opacity-90 leading-relaxed">Be part of the <span className="font-bold">Health & Wellness Charter Council</span> in the first year — help shape community guidelines and values.</p>

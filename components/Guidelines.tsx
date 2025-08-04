@@ -59,7 +59,7 @@ export default function WhatsIncluded() {
           </div>
 
           {/* Detailed Benefits */}
-          <div className="bg-gradient-to-br from-primary-green to-primary-clay rounded-3xl p-8 md:p-12 text-primary-white">
+          <div className="bg-primary-green rounded-3xl p-8 md:p-12 text-primary-white shadow-lg">
             <h3 className="text-3xl md:text-4xl font-bold mb-8 text-center">
               Your Complete Ownership Package
             </h3>

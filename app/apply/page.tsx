@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { CheckCircle, ArrowLeft, Send } from 'lucide-react'
+import { CheckCircle, ArrowLeft, Send, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 
 export default function ApplicationForm() {
@@ -38,7 +38,29 @@ export default function ApplicationForm() {
   })
 
   const [currentSection, setCurrentSection] = useState(1)
+  const [currentMotivation, setCurrentMotivation] = useState(0)
+  const [sectionErrors, setSectionErrors] = useState<string[]>([])
   const totalSections = 6
+
+  const motivationalMessages = [
+    "🌟 Only 150 applications will be accepted - secure your spot in this exclusive community!",
+    "⏰ Limited time opportunity - be part of India's first land-based wellness collective!",
+    "🏡 Your dream 10,000 sq ft wellness retreat is just one application away!",
+    "💎 Founding members get priority plot selection - don't miss this chance!",
+    "🌱 Join 99 other health-conscious achievers in building something extraordinary!",
+    "🎯 This isn't just land ownership - it's your gateway to purposeful living!",
+    "✨ Transform your weekends into wellness retreats in your own private sanctuary!",
+    "🤝 Be part of a curated community that values health over wealth!"
+  ]
+
+  // Motivational message rotation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMotivation((prev) => (prev + 1) % motivationalMessages.length)
+    }, 10000) // Every 10 seconds
+
+    return () => clearInterval(interval)
+  }, [])
 
   const wellnessPracticeOptions = [
     'Functional fitness',
@@ -83,15 +105,53 @@ export default function ApplicationForm() {
     alert('Thank you for your application! You will receive a confirmation email with a PDF deck and FAQs shortly.')
   }
 
+  const validateSection = (section: number): string[] => {
+    const errors: string[] = []
+    
+    switch (section) {
+      case 1:
+        if (!formData.fullName.trim()) errors.push('Full Name is required')
+        if (!formData.mobile.trim()) errors.push('Mobile Number is required')
+        if (!formData.email.trim()) errors.push('Email Address is required')
+        break
+      case 2:
+        if (formData.wellnessPractices.length === 0) errors.push('Select at least one wellness practice')
+        if (!formData.healthExperience.trim()) errors.push('Health experience is required')
+        if (formData.wellnessThemes.length === 0) errors.push('Select at least one wellness theme')
+        break
+      case 3:
+        if (!formData.landUsage) errors.push('Land usage frequency is required')
+        if (!formData.engagementStyle) errors.push('Engagement style is required')
+        if (!formData.serviceChargeAgreement) errors.push('Service charge agreement is required')
+        break
+      case 4:
+        if (!formData.financialReadiness) errors.push('Financial readiness status is required')
+        break
+      case 5:
+        if (!formData.skillsContribution.trim()) errors.push('Skills contribution is required')
+        break
+      case 6:
+        if (!formData.pledge) errors.push('You must agree to the pledge')
+        break
+    }
+    
+    return errors
+  }
+
   const nextSection = () => {
-    if (currentSection < totalSections) {
+    const errors = validateSection(currentSection)
+    setSectionErrors(errors)
+    
+    if (errors.length === 0 && currentSection < totalSections) {
       setCurrentSection(currentSection + 1)
+      setSectionErrors([])
     }
   }
 
   const prevSection = () => {
     if (currentSection > 1) {
       setCurrentSection(currentSection - 1)
+      setSectionErrors([])
     }
   }
 
@@ -147,6 +207,30 @@ export default function ApplicationForm() {
 
           {/* Progress Bar */}
           {renderProgressBar()}
+
+          {/* Motivational Message */}
+          <div className="bg-gradient-to-r from-primary-green to-primary-clay rounded-2xl p-4 mb-8 text-center">
+            <p className="text-primary-white font-medium animate-pulse">
+              {motivationalMessages[currentMotivation]}
+            </p>
+          </div>
+
+          {/* Section Errors */}
+          {sectionErrors.length > 0 && (
+            <div className="bg-red-50 border border-red-200 rounded-2xl p-6 mb-8">
+              <div className="flex items-start space-x-3">
+                <AlertCircle className="text-red-500 flex-shrink-0 mt-1" size={24} />
+                <div>
+                  <h3 className="text-red-800 font-semibold mb-2">Please complete the following:</h3>
+                  <ul className="space-y-1">
+                    {sectionErrors.map((error, index) => (
+                      <li key={index} className="text-red-700 text-sm">• {error}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="bg-primary-white rounded-3xl p-8 md:p-12 shadow-lg">
@@ -594,6 +678,39 @@ export default function ApplicationForm() {
           </form>
         </div>
       </div>
+
+      {/* Fixed Bottom Completion Status Bar */}
+      <div className="fixed bottom-0 left-0 right-0 bg-primary-white border-t border-primary-mist shadow-lg z-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="text-sm font-medium text-primary-black">
+                Application Progress
+              </div>
+              <div className="flex-1 w-64 bg-primary-mist rounded-full h-2">
+                <div 
+                  className="bg-primary-green h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${(currentSection / totalSections) * 100}%` }}
+                />
+              </div>
+              <div className="text-sm text-primary-sage">
+                {currentSection}/{totalSections} Complete
+              </div>
+            </div>
+            
+            <div className="hidden md:block">
+              <p className="text-sm text-primary-sage">
+                🏡 <span className="font-semibold text-primary-green">
+                  {Math.round(((currentSection / totalSections) * 100))}% completed
+                </span> - Your wellness retreat awaits!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom padding to account for fixed status bar */}
+      <div className="h-20"></div>
     </div>
   )
 }

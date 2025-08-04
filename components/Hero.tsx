@@ -4,18 +4,19 @@ import { ChevronDown } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-primary-mist to-primary-white flex items-center justify-center overflow-hidden">
-      {/* Background decorative elements */}
+    <section className="relative min-h-screen bg-primary-white flex items-center justify-center overflow-hidden">
+      {/* Premium background pattern */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-green/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-clay/10 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-white via-primary-mist/30 to-primary-white"></div>
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary-green/5 rounded-full blur-2xl"></div>
+        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-primary-clay/5 rounded-full blur-2xl"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-5xl mx-auto">
-          {/* Main heading with emoji */}
+          {/* Main heading - clean and premium */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-black mb-6 fade-in">
-            Kenn EcoEstates 🐘
+            Kenn EcoEstates
           </h1>
 
           {/* Key stats */}
