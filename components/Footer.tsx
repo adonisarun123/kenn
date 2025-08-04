@@ -15,7 +15,7 @@ export default function Footer() {
                   alt="Kenn EcoEstates"
                   width={150}
                   height={50}
-                  className="w-auto h-12 filter brightness-0 invert"
+                  className="w-auto h-12 bg-primary-white rounded-lg px-3 py-2"
                 />
               </div>
               <p className="text-gray-300 leading-relaxed mb-6">
