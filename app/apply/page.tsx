@@ -112,7 +112,11 @@ export default function ApplicationForm() {
       case 1:
         if (!formData.fullName.trim()) errors.push('Full Name is required')
         if (!formData.mobile.trim()) errors.push('Mobile Number is required')
-        if (!formData.email.trim()) errors.push('Email Address is required')
+        if (!formData.email.trim()) {
+          errors.push('Email Address is required')
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+          errors.push('Please enter a valid email address')
+        }
         break
       case 2:
         if (formData.wellnessPractices.length === 0) errors.push('Select at least one wellness practice')

@@ -57,6 +57,11 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href="/community-guidelines" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
+                    Community Guidelines
+                  </a>
+                </li>
+                <li>
                   <a href="#join" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
                     Apply to Join
                   </a>
