@@ -19,11 +19,11 @@ export default function Footer() {
                 />
               </div>
               <p className="text-gray-300 leading-relaxed mb-6">
-                A private, purpose-driven community of 100 wellness seekers. 
-                For those who seek nature, balance, and belonging.
+                A curated, ultra-premium wellness community co-created by health-conscious achievers. 
+                30 Acres • 100 Families • 1 Purpose.
               </p>
               <p className="text-primary-green font-semibold text-lg italic">
-                Where Clean Living Meets Collective Consciousness
+                Where Wellness Finds Land
               </p>
             </div>
             
@@ -33,27 +33,32 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li>
                   <a href="#vision" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
-                    Our Vision
+                    The Vision
                   </a>
                 </li>
                 <li>
-                  <a href="#land" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
-                    The Land
+                  <a href="#unique" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
+                    What Makes It Unique
                   </a>
                 </li>
                 <li>
                   <a href="#community" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
-                    Community
+                    Who Should Join
                   </a>
                 </li>
                 <li>
-                  <a href="#guidelines" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
-                    Guidelines
+                  <a href="#included" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
+                    What's Included
+                  </a>
+                </li>
+                <li>
+                  <a href="#mission" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
+                    Our Mission
                   </a>
                 </li>
                 <li>
                   <a href="#join" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
-                    Join Us
+                    Apply to Join
                   </a>
                 </li>
               </ul>
@@ -68,10 +73,10 @@ export default function Footer() {
                   <div>
                     <p className="text-gray-300 text-sm">Email us:</p>
                     <a 
-                      href="mailto:connect@kennecoestates.in" 
+                      href="mailto:connect@kennecoestates.com" 
                       className="text-primary-green hover:text-primary-clay transition-colors duration-200"
                     >
-                      connect@kennecoestates.in
+                      connect@kennecoestates.com
                     </a>
                   </div>
                 </div>

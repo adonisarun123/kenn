@@ -33,13 +33,13 @@ export default function Header() {
               href="#vision"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
-              Our Vision
+              Vision
             </a>
             <a
-              href="#land"
+              href="#unique"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
-              The Land
+              Unique
             </a>
             <a
               href="#community"
@@ -48,16 +48,16 @@ export default function Header() {
               Community
             </a>
             <a
-              href="#guidelines"
+              href="#included"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
-              Guidelines
+              What's Included
             </a>
             <a
               href="#join"
               className="bg-primary-green text-primary-white px-6 py-2 rounded-full hover:bg-primary-clay transition-colors duration-200 font-medium"
             >
-              Join Us
+              Apply
             </a>
           </nav>
 
@@ -81,14 +81,14 @@ export default function Header() {
                 className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
                 onClick={toggleMenu}
               >
-                Our Vision
+                Vision
               </a>
               <a
-                href="#land"
+                href="#unique"
                 className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
                 onClick={toggleMenu}
               >
-                The Land
+                Unique
               </a>
               <a
                 href="#community"
@@ -98,18 +98,18 @@ export default function Header() {
                 Community
               </a>
               <a
-                href="#guidelines"
+                href="#included"
                 className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
                 onClick={toggleMenu}
               >
-                Guidelines
+                What's Included
               </a>
               <a
                 href="#join"
                 className="block mx-3 mt-4 mb-2 bg-primary-green text-primary-white px-6 py-2 rounded-full hover:bg-primary-clay transition-colors duration-200 font-medium text-center"
                 onClick={toggleMenu}
               >
-                Join Us
+                Apply
               </a>
             </nav>
           </div>

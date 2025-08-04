@@ -1,9 +1,9 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Vision from '@/components/Vision'
-import Land from '@/components/Land'
-import Community from '@/components/Community'
-import Guidelines from '@/components/Guidelines'
+import Unique from '@/components/Community'
+import WhoShouldJoin from '@/components/Land'
+import WhatsIncluded from '@/components/Guidelines'
 import Join from '@/components/Join'
 import Footer from '@/components/Footer'
 
@@ -13,9 +13,9 @@ export default function Home() {
       <Header />
       <Hero />
       <Vision />
-      <Land />
-      <Community />
-      <Guidelines />
+      <Unique />
+      <WhoShouldJoin />
+      <WhatsIncluded />
       <Join />
       <Footer />
     </main>

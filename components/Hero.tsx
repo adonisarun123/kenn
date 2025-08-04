@@ -12,25 +12,22 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto">
-          {/* Emoji decoration */}
-          <div className="text-6xl md:text-8xl mb-8 fade-in">
-            🐘🌿
-          </div>
-
-          {/* Main heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-black mb-6 slide-in-left">
-            Welcome to{' '}
-            <span className="text-primary-green">Kenn EcoEstates</span>
+        <div className="max-w-5xl mx-auto">
+          {/* Main heading with emoji */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-black mb-6 fade-in">
+            Kenn EcoEstates 🐘
           </h1>
 
-          {/* Subtitle */}
-          <div className="text-xl md:text-2xl text-primary-sage mb-8 slide-in-right">
-            <p className="font-semibold mb-2">
-              A Private, Purpose-Driven Community of 100 Wellness Seekers
-            </p>
-            <p className="italic">
-              For Those Who Seek Nature, Balance, and Belonging.
+          {/* Key stats */}
+          <div className="text-xl md:text-3xl font-semibold text-primary-green mb-8 slide-in-left">
+            30 Acres • 100 Wellness-Driven Families • 1 Purpose
+          </div>
+
+          {/* Value proposition */}
+          <div className="text-lg md:text-2xl text-primary-sage mb-12 slide-in-right max-w-4xl mx-auto">
+            <p className="font-medium leading-relaxed">
+              Not just land ownership. A curated, ultra-premium wellness community — 
+              co-created by <span className="text-primary-clay font-semibold">health-conscious achievers</span>.
             </p>
           </div>
 
@@ -40,32 +37,32 @@ export default function Hero() {
               href="#vision"
               className="bg-primary-green text-primary-white px-8 py-4 rounded-full hover:bg-primary-clay transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              Discover Our Vision
+              Explore The Vision
             </a>
             <a
               href="#join"
               className="border-2 border-primary-green text-primary-green px-8 py-4 rounded-full hover:bg-primary-green hover:text-primary-white transition-all duration-300 font-semibold"
             >
-              Request to Join
+              Request Invitation
             </a>
           </div>
 
           {/* Key highlights */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12 fade-in">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12 fade-in">
             <div className="bg-primary-white/50 backdrop-blur-sm rounded-2xl p-6 border border-primary-mist">
-              <div className="text-3xl mb-3">🌱</div>
-              <h3 className="font-semibold text-primary-black mb-2">Purpose-Driven</h3>
-              <p className="text-primary-sage text-sm">Not profit-driven, but community-centered</p>
+              <div className="text-3xl mb-3">🏡</div>
+              <h3 className="font-semibold text-primary-black mb-2">10,000 sq ft</h3>
+              <p className="text-primary-sage text-sm">Individual land ownership</p>
+            </div>
+            <div className="bg-primary-white/50 backdrop-blur-sm rounded-2xl p-6 border border-primary-mist">
+              <div className="text-3xl mb-3">🗳️</div>
+              <h3 className="font-semibold text-primary-black mb-2">0.5% Voting Rights</h3>
+              <p className="text-primary-sage text-sm">Per plot owner in community decisions</p>
             </div>
             <div className="bg-primary-white/50 backdrop-blur-sm rounded-2xl p-6 border border-primary-mist">
               <div className="text-3xl mb-3">📍</div>
-              <h3 className="font-semibold text-primary-black mb-2">30 Acres</h3>
-              <p className="text-primary-sage text-sm">Within 150km of Bangalore</p>
-            </div>
-            <div className="bg-primary-white/50 backdrop-blur-sm rounded-2xl p-6 border border-primary-mist">
-              <div className="text-3xl mb-3">🧘‍♀️</div>
-              <h3 className="font-semibold text-primary-black mb-2">Mindful Living</h3>
-              <p className="text-primary-sage text-sm">Yoga, meditation & wellness focus</p>
+              <h3 className="font-semibold text-primary-black mb-2">Within 150 km</h3>
+              <p className="text-primary-sage text-sm">From Bangalore, away from pollution</p>
             </div>
           </div>
         </div>

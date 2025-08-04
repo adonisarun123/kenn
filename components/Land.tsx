@@ -1,121 +1,133 @@
-import { MapPin, Trees, Users, Wind } from 'lucide-react'
+import { Heart, Dumbbell, Leaf, TreePine, Users } from 'lucide-react'
 
-export default function Land() {
+export default function WhoShouldJoin() {
   return (
-    <section id="land" className="py-20 bg-primary-mist">
+    <section id="community" className="py-20 bg-primary-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary-black mb-8">
-              📍 The Land
+              👥 Who Should Join
             </h2>
-            <p className="text-xl text-primary-sage max-w-3xl mx-auto">
-              Discover our pristine 30-acre sanctuary, carefully selected for its natural beauty and proximity to Bangalore.
+            <p className="text-xl text-primary-sage max-w-4xl mx-auto">
+              We are inviting <span className="font-bold text-primary-green">100 carefully selected individuals or families</span> who share our vision of health-conscious, purposeful living.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left column - Features */}
-            <div className="space-y-8">
-              <div className="bg-primary-white rounded-3xl p-8 shadow-lg">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary-green/10 rounded-full p-3">
-                    <Trees className="text-primary-green" size={32} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-primary-black mb-3">
-                      30 Acres of Pure, Green Serenity
-                    </h3>
-                    <p className="text-primary-sage leading-relaxed">
-                      Expansive green spaces designed to maintain the natural ecosystem while providing 
-                      ample room for each community member's personal retreat space.
-                    </p>
-                  </div>
+          {/* Target Criteria */}
+          <div className="bg-primary-mist rounded-3xl p-8 md:p-12 mb-16">
+            <h3 className="text-2xl md:text-3xl font-bold text-primary-black mb-8 text-center">
+              We're Looking For People Who:
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex items-start space-x-4">
+                <div className="bg-primary-green rounded-full p-3 mt-1 flex-shrink-0">
+                  <Heart className="text-white" size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary-black mb-2 text-lg">
+                    Prioritize Health, Fitness, and Clean Food
+                  </h4>
+                  <p className="text-primary-sage leading-relaxed">
+                    You understand that true wealth is health, and you're committed to maintaining physical and mental well-being through conscious lifestyle choices.
+                  </p>
                 </div>
               </div>
-
-              <div className="bg-primary-white rounded-3xl p-8 shadow-lg">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary-clay/10 rounded-full p-3">
-                    <MapPin className="text-primary-clay" size={32} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-primary-black mb-3">
-                      Within 150 km of Bangalore
-                    </h3>
-                    <p className="text-primary-sage leading-relaxed">
-                      Conveniently located for weekend getaways and extended retreats, 
-                      yet far enough to escape the city's hustle and pollution.
-                    </p>
-                  </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="bg-primary-clay rounded-full p-3 mt-1 flex-shrink-0">
+                  <Dumbbell className="text-white" size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary-black mb-2 text-lg">
+                    Enjoy Nature Walks & Functional Movement
+                  </h4>
+                  <p className="text-primary-sage leading-relaxed">
+                    You find joy in outdoor activities, natural movement, and staying active in harmony with nature rather than confined gym spaces.
+                  </p>
                 </div>
               </div>
-
-              <div className="bg-primary-white rounded-3xl p-8 shadow-lg">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary-green/10 rounded-full p-3">
-                    <Wind className="text-primary-green" size={32} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-primary-black mb-3">
-                      Pollution-Free Environment
-                    </h3>
-                    <p className="text-primary-sage leading-relaxed">
-                      Clean air, natural water sources, and access to organic living in a 
-                      peaceful environment away from urban pollution.
-                    </p>
-                  </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="bg-primary-green rounded-full p-3 mt-1 flex-shrink-0">
+                  <Leaf className="text-white" size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary-black mb-2 text-lg">
+                    Want a Calmer, Cleaner Environment
+                  </h4>
+                  <p className="text-primary-sage leading-relaxed">
+                    You're seeking a peaceful space to unplug, recharge, and escape from urban chaos without losing touch with progress.
+                  </p>
                 </div>
               </div>
-
-              <div className="bg-primary-white rounded-3xl p-8 shadow-lg">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary-clay/10 rounded-full p-3">
-                    <Users className="text-primary-clay" size={32} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-primary-black mb-3">
-                      Only 100 Curated Members
-                    </h3>
-                    <p className="text-primary-sage leading-relaxed">
-                      No crowding, no chaos. A carefully curated community that ensures 
-                      quality relationships and peaceful coexistence.
-                    </p>
-                  </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="bg-primary-clay rounded-full p-3 mt-1 flex-shrink-0">
+                  <TreePine className="text-white" size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary-black mb-2 text-lg">
+                    Enjoy Organic Farming & Sustainability
+                  </h4>
+                  <p className="text-primary-sage leading-relaxed">
+                    You appreciate growing your own food, sustainable practices, and contributing to environmental conservation.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="bg-primary-green rounded-full p-3 mt-1 flex-shrink-0">
+                  <Users className="text-white" size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary-black mb-2 text-lg">
+                    Respect Shared Values & Community-First Thinking
+                  </h4>
+                  <p className="text-primary-sage leading-relaxed">
+                    You understand that individual success is enhanced by collective well-being and community support.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="bg-primary-clay rounded-full p-3 mt-1 flex-shrink-0">
+                  <span className="text-white text-xl">🎯</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary-black mb-2 text-lg">
+                    Can Commit to Long-Term, Purpose-Led Ecosystem
+                  </h4>
+                  <p className="text-primary-sage leading-relaxed">
+                    You're not just looking for a transaction, but to be part of building something meaningful for the future.
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Right column - Visual representation */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-primary-green to-primary-clay rounded-3xl p-12 text-center text-primary-white">
-                <div className="text-6xl mb-6">🌄</div>
-                <h3 className="text-3xl font-bold mb-4">Your Sanctuary Awaits</h3>
-                <p className="text-lg opacity-90 mb-8">
-                  Imagine waking up to fresh mountain air, the sound of birds, 
-                  and the serenity of nature at your doorstep.
-                </p>
-                
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-6 mt-8">
-                  <div className="bg-primary-white/20 rounded-2xl p-4">
-                    <div className="text-3xl font-bold">30</div>
-                    <div className="text-sm opacity-90">Acres</div>
-                  </div>
-                  <div className="bg-primary-white/20 rounded-2xl p-4">
-                    <div className="text-3xl font-bold">100</div>
-                    <div className="text-sm opacity-90">Members</div>
-                  </div>
-                  <div className="bg-primary-white/20 rounded-2xl p-4">
-                    <div className="text-3xl font-bold">&lt;150</div>
-                    <div className="text-sm opacity-90">KM from BLR</div>
-                  </div>
-                  <div className="bg-primary-white/20 rounded-2xl p-4">
-                    <div className="text-3xl font-bold">∞</div>
-                    <div className="text-sm opacity-90">Peace</div>
-                  </div>
-                </div>
-              </div>
+          {/* Call to Action */}
+          <div className="bg-gradient-to-br from-primary-green to-primary-clay rounded-3xl p-8 md:p-12 text-primary-white text-center">
+            <h3 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Reclaim Your Time, Body, and Mental Peace?
+            </h3>
+            <p className="text-lg md:text-xl opacity-90 leading-relaxed max-w-4xl mx-auto mb-8">
+              Join a community of <span className="font-bold">achievers who prioritize life over luxury</span> — where wellness finds land, and purpose meets progress.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#included"
+                className="bg-primary-white text-primary-green px-8 py-4 rounded-full hover:bg-primary-mist transition-all duration-300 font-semibold"
+              >
+                See What's Included
+              </a>
+              <a
+                href="#join"
+                className="border-2 border-primary-white text-primary-white px-8 py-4 rounded-full hover:bg-primary-white hover:text-primary-green transition-all duration-300 font-semibold"
+              >
+                Apply to Join
+              </a>
             </div>
           </div>
         </div>
