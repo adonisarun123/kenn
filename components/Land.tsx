@@ -123,10 +123,10 @@ export default function WhoShouldJoin() {
                 See What's Included
               </a>
               <a
-                href="#join"
+                href="/apply"
                 className="border-2 border-primary-white text-primary-white px-8 py-4 rounded-full hover:bg-primary-white hover:text-primary-green transition-all duration-300 font-semibold"
               >
-                Apply to Join
+                Apply Now
               </a>
             </div>
           </div>

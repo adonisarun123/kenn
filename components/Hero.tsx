@@ -40,10 +40,10 @@ export default function Hero() {
               Explore The Vision
             </a>
             <a
-              href="#join"
+              href="/apply"
               className="border-2 border-primary-green text-primary-green px-8 py-4 rounded-full hover:bg-primary-green hover:text-primary-white transition-all duration-300 font-semibold"
             >
-              Request Invitation
+              Apply Now
             </a>
           </div>
 

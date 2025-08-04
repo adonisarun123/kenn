@@ -266,12 +266,12 @@ export default function Join() {
                   />
                 </div>
                 
-                <button
-                  type="submit"
-                  className="w-full bg-primary-green text-primary-white py-4 rounded-lg font-semibold hover:bg-primary-clay transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                <a
+                  href="/apply"
+                  className="w-full block text-center bg-primary-green text-primary-white py-4 rounded-lg font-semibold hover:bg-primary-clay transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  Submit Request to Join
-                </button>
+                  Complete Full Application
+                </a>
               </form>
             </div>
           </div>

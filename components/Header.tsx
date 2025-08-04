@@ -54,7 +54,7 @@ export default function Header() {
               What's Included
             </a>
             <a
-              href="#join"
+              href="/apply"
               className="bg-primary-green text-primary-white px-6 py-2 rounded-full hover:bg-primary-clay transition-colors duration-200 font-medium"
             >
               Apply
@@ -105,7 +105,7 @@ export default function Header() {
                 What's Included
               </a>
               <a
-                href="#join"
+                href="/apply"
                 className="block mx-3 mt-4 mb-2 bg-primary-green text-primary-white px-6 py-2 rounded-full hover:bg-primary-clay transition-colors duration-200 font-medium text-center"
                 onClick={toggleMenu}
               >
