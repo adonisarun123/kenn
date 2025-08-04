@@ -209,7 +209,7 @@ export default function ApplicationForm() {
           {renderProgressBar()}
 
           {/* Motivational Message */}
-          <div className="bg-gradient-to-r from-primary-green to-primary-clay rounded-2xl p-4 mb-8 text-center">
+          <div className="bg-primary-green rounded-2xl p-4 mb-8 text-center shadow-lg">
             <p className="text-primary-white font-medium animate-pulse">
               {motivationalMessages[currentMotivation]}
             </p>
