@@ -288,7 +288,7 @@ export default function ApplicationForm() {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-primary-black mb-4">
-              📝 Kenn EcoEstates Application Form
+              Kenn EcoEstates Application Form
             </h1>
             <p className="text-xl text-primary-sage mb-2">
               Join India's First Land-Based Health & Wellness Collective

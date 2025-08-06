@@ -1,4 +1,4 @@
-import { CheckCircle, Users, Vote, Trees, Heart, UserPlus } from 'lucide-react'
+import { CheckCircle, Users, Vote, Trees, Heart, UserPlus, Calendar } from 'lucide-react'
 
 export default function WhatsIncluded() {
   const benefits = [
@@ -26,6 +26,11 @@ export default function WhatsIncluded() {
       icon: <UserPlus className="text-primary-green" size={40} />,
       title: "Referral Network Benefits",
       description: "Eligibility to refer qualified members and expand the network with attractive referral incentives."
+    },
+    {
+      icon: <Calendar className="text-primary-clay" size={40} />,
+      title: "Curated Wellness Programs",
+      description: "Access to monthly workshops, seasonal retreats, and expert-led wellness sessions designed exclusively for community members."
     }
   ]
 

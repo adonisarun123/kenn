@@ -15,7 +15,7 @@ export default function Footer() {
                   alt="Kenn EcoEstates"
                   width={150}
                   height={50}
-                  className="w-auto h-12 filter brightness-0 invert"
+                  className="w-auto h-12 bg-primary-white rounded-lg px-3 py-2"
                 />
               </div>
               <p className="text-gray-300 leading-relaxed mb-6">
@@ -54,6 +54,11 @@ export default function Footer() {
                 <li>
                   <a href="#mission" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
                     Our Mission
+                  </a>
+                </li>
+                <li>
+                  <a href="/community-guidelines" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
+                    Community Guidelines
                   </a>
                 </li>
                 <li>
