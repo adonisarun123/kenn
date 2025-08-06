@@ -99,10 +99,34 @@ export default function ApplicationForm() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Thank you for your application! You will receive a confirmation email with a PDF deck and FAQs shortly.')
+    
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      const result = await response.json()
+      
+      if (result.success) {
+        // The form was submitted successfully. The user will be notified by email.
+        // You might want to redirect to a dedicated thank-you page here.
+        // For now, we can just clear the form or show a success message.
+        // The form was submitted successfully. A confirmation email will be sent.
+        // You could redirect to a thank-you page or show a success message here.
+      } else {
+        // Handle server-side validation errors or other issues
+        // There was an error with the submission. You could show an error message here.
+        // For example: setFormError(result.error || 'An unknown error occurred.');
+      }
+    } catch (error) {
+      // An unexpected error occurred. You could show a generic error message here.
+    }
   }
 
   const validateSection = (section: number): string[] => {
@@ -110,28 +134,97 @@ export default function ApplicationForm() {
     
     switch (section) {
       case 1:
-        if (!formData.fullName.trim()) errors.push('Full Name is required')
-        if (!formData.mobile.trim()) errors.push('Mobile Number is required')
-        if (!formData.email.trim()) errors.push('Email Address is required')
+        // Full Name validation
+        if (!formData.fullName.trim()) {
+          errors.push('Full Name is required')
+        } else if (formData.fullName.trim().length < 2) {
+          errors.push('Full Name must be at least 2 characters long')
+        } else if (formData.fullName.trim().length > 100) {
+          errors.push('Full Name must be less than 100 characters')
+        }
+        
+        // Mobile Number validation
+        if (!formData.mobile.trim()) {
+          errors.push('Mobile Number is required')
+        } else {
+          const phoneRegex = /^[+]?[0-9\s\-()]{10,15}$/
+          if (!phoneRegex.test(formData.mobile.trim())) {
+            errors.push('Please enter a valid mobile number (10-15 digits)')
+          }
+        }
+        
+        // Email validation
+        if (!formData.email.trim()) {
+          errors.push('Email Address is required')
+        } else {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+          if (!emailRegex.test(formData.email.trim())) {
+            errors.push('Please enter a valid email address')
+          }
+        }
+        
+        // LinkedIn validation (optional but if provided, should be valid)
+        if (formData.linkedin.trim() && !formData.linkedin.trim().startsWith('http')) {
+          errors.push('LinkedIn URL should start with http:// or https://')
+        }
         break
+        
       case 2:
-        if (formData.wellnessPractices.length === 0) errors.push('Select at least one wellness practice')
-        if (!formData.healthExperience.trim()) errors.push('Health experience is required')
-        if (formData.wellnessThemes.length === 0) errors.push('Select at least one wellness theme')
+        if (formData.wellnessPractices.length === 0) {
+          errors.push('Select at least one wellness practice')
+        }
+        
+        if (!formData.healthExperience.trim()) {
+          errors.push('Health experience is required')
+        } else if (formData.healthExperience.trim().length < 10) {
+          errors.push('Please provide at least 10 characters for your health experience')
+        }
+        
+        if (formData.wellnessThemes.length === 0) {
+          errors.push('Select at least one wellness theme')
+        }
+        
+        // If "Other" is selected, validate the other field
+        if (formData.wellnessThemes.includes('Other') && !formData.wellnessThemesOther.trim()) {
+          errors.push('Please specify other wellness themes when "Other" is selected')
+        }
         break
+        
       case 3:
-        if (!formData.landUsage) errors.push('Land usage frequency is required')
-        if (!formData.engagementStyle) errors.push('Engagement style is required')
-        if (!formData.serviceChargeAgreement) errors.push('Service charge agreement is required')
+        if (!formData.landUsage) {
+          errors.push('Land usage frequency is required')
+        }
+        if (!formData.engagementStyle) {
+          errors.push('Engagement style is required')
+        }
+        if (!formData.serviceChargeAgreement) {
+          errors.push('Service charge agreement is required')
+        }
         break
+        
       case 4:
-        if (!formData.financialReadiness) errors.push('Financial readiness status is required')
+        if (!formData.financialReadiness) {
+          errors.push('Financial readiness status is required')
+        }
         break
+        
       case 5:
-        if (!formData.skillsContribution.trim()) errors.push('Skills contribution is required')
+        if (!formData.skillsContribution.trim()) {
+          errors.push('Skills contribution is required')
+        } else if (formData.skillsContribution.trim().length < 10) {
+          errors.push('Please provide at least 10 characters for your skills contribution')
+        }
         break
+        
       case 6:
-        if (!formData.pledge) errors.push('You must agree to the pledge')
+        if (!formData.pledge) {
+          errors.push('You must agree to the pledge to continue')
+        }
+        if (!formData.finalThoughts.trim()) {
+          errors.push('Final thoughts are required')
+        } else if (formData.finalThoughts.trim().length < 10) {
+          errors.push('Please provide at least 10 characters for your final thoughts')
+        }
         break
     }
     
@@ -255,7 +348,7 @@ export default function ApplicationForm() {
                       required
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                      className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green bg-white text-primary-black placeholder-primary-sage"
                       placeholder="Your full name"
                     />
                   </div>
@@ -270,7 +363,7 @@ export default function ApplicationForm() {
                       required
                       value={formData.mobile}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                      className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green bg-white text-primary-black placeholder-primary-sage"
                       placeholder="+91 12345 67890"
                     />
                   </div>
@@ -285,7 +378,7 @@ export default function ApplicationForm() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                      className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green bg-white text-primary-black placeholder-primary-sage"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -299,7 +392,7 @@ export default function ApplicationForm() {
                       name="linkedin"
                       value={formData.linkedin}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                      className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green bg-white text-primary-black placeholder-primary-sage"
                       placeholder="https://linkedin.com/in/yourprofile"
                     />
                     <p className="text-xs text-primary-sage mt-1">To understand your background and interests</p>
@@ -348,7 +441,7 @@ export default function ApplicationForm() {
                     onChange={handleInputChange}
                     rows={3}
                     maxLength={300}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none"
+                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none bg-white text-primary-black placeholder-primary-sage"
                     placeholder="Share a transformative moment in your wellness journey..."
                   />
                   <p className="text-xs text-primary-sage mt-1">{formData.healthExperience.length}/300 characters</p>
@@ -380,7 +473,7 @@ export default function ApplicationForm() {
                       name="wellnessThemesOther"
                       value={formData.wellnessThemesOther}
                       onChange={handleInputChange}
-                      className="w-full mt-3 px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                      className="w-full mt-3 px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green bg-white text-primary-black placeholder-primary-sage"
                       placeholder="Please specify other wellness themes..."
                     />
                   )}
@@ -518,7 +611,7 @@ export default function ApplicationForm() {
                     value={formData.sharedInfraSupport}
                     onChange={handleInputChange}
                     rows={3}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none"
+                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none bg-white text-primary-black placeholder-primary-sage"
                     placeholder="Optional amount or description of how you'd like to contribute to shared infrastructure..."
                   />
                   <p className="text-xs text-primary-sage mt-1">Optional - Any amount or in-kind contribution ideas</p>
@@ -547,7 +640,7 @@ export default function ApplicationForm() {
                     onChange={handleInputChange}
                     rows={3}
                     maxLength={300}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none"
+                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none bg-white text-primary-black placeholder-primary-sage"
                     placeholder="E.g., organic farming expertise, yoga instruction, sustainable architecture, event planning, wellness coaching..."
                   />
                   <p className="text-xs text-primary-sage mt-1">{formData.skillsContribution.length}/300 characters</p>
@@ -562,7 +655,7 @@ export default function ApplicationForm() {
                     name="referredBy"
                     value={formData.referredBy}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green bg-white text-primary-black placeholder-primary-sage"
                     placeholder="Mention name (if any)"
                   />
                   <p className="text-xs text-primary-sage mt-1">Referral-based benefits apply only if mentioned now</p>
@@ -613,7 +706,7 @@ export default function ApplicationForm() {
                     value={formData.finalThoughts}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none"
+                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none bg-white text-primary-black placeholder-primary-sage"
                     placeholder="Share any questions, concerns, or additional thoughts about joining our community..."
                   />
                 </div>

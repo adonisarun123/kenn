@@ -1,9 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Star, Crown, Vote, Users } from 'lucide-react'
 
 export default function Join() {
+  const router = useRouter()
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,12 +18,56 @@ export default function Join() {
     experience: ''
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData)
-    alert('Thank you for your interest! We will contact you soon.')
+  const validate = () => {
+    const newErrors: Record<string, string> = {}
+    if (!formData.name.trim()) newErrors.name = 'Full Name is required.'
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email Address is required.'
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email address is invalid.'
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone Number is required.'
+    } else if (!/^\+?[1-9]\d{1,14}$/.test(formData.phone.replace(/\s/g, ''))) {
+      newErrors.phone = 'Phone number is invalid.'
+    }
+    if (!formData.location.trim()) newErrors.location = 'Current Location is required.'
+    if (!formData.interests.trim()) newErrors.interests = 'Wellness Interests is required.'
+    if (!formData.intent.trim()) newErrors.intent = 'Your Intent is required.'
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
   }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate()) {
+      setIsSubmitting(true);
+      try {
+        const response = await fetch('/api/homepage-form', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          router.push('/apply');
+        } else {
+          // Optionally, handle the error state in the UI, e.g., by setting an error message
+        }
+      } catch (error) {
+        // Optionally, handle the error state in the UI
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+      // Validation failed, errors are displayed in the UI
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -181,9 +229,10 @@ export default function Join() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 bg-white text-primary-black placeholder-gray-400 ${errors.name ? 'border-red-500 focus:ring-red-500' : 'border-primary-mist focus:ring-primary-green'}`}
                     placeholder="Your full name"
                   />
+                  {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                 </div>
                 
                 <div>
@@ -197,9 +246,10 @@ export default function Join() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 bg-white text-primary-black placeholder-gray-400 ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-primary-mist focus:ring-primary-green'}`}
                     placeholder="your@email.com"
                   />
+                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
                 
                 <div>
@@ -213,9 +263,10 @@ export default function Join() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 bg-white text-primary-black placeholder-gray-400 ${errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-primary-mist focus:ring-primary-green'}`}
                     placeholder="+91 12345 67890"
                   />
+                  {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                 </div>
                 
                 <div>
@@ -229,9 +280,10 @@ export default function Join() {
                     required
                     value={formData.location}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green"
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 bg-white text-primary-black placeholder-gray-400 ${errors.location ? 'border-red-500 focus:ring-red-500' : 'border-primary-mist focus:ring-primary-green'}`}
                     placeholder="City, State/Country"
                   />
+                  {errors.location && <p className="text-red-500 text-xs mt-1">{errors.location}</p>}
                 </div>
                 
                 <div>
@@ -245,9 +297,10 @@ export default function Join() {
                     rows={3}
                     value={formData.interests}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none"
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 resize-none bg-white text-primary-black placeholder-gray-400 ${errors.interests ? 'border-red-500 focus:ring-red-500' : 'border-primary-mist focus:ring-primary-green'}`}
                     placeholder="Yoga, meditation, organic farming, etc."
                   />
+                  {errors.interests && <p className="text-red-500 text-xs mt-1">{errors.interests}</p>}
                 </div>
                 
                 <div>
@@ -261,17 +314,19 @@ export default function Join() {
                     rows={4}
                     value={formData.intent}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-primary-mist rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-green resize-none"
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 resize-none bg-white text-primary-black placeholder-gray-400 ${errors.intent ? 'border-red-500 focus:ring-red-500' : 'border-primary-mist focus:ring-primary-green'}`}
                     placeholder="What draws you to this community? How do you envision using the space?"
                   />
+                  {errors.intent && <p className="text-red-500 text-xs mt-1">{errors.intent}</p>}
                 </div>
                 
-                <a
-                  href="/apply"
-                  className="w-full block text-center bg-primary-green text-primary-white py-4 rounded-lg font-semibold hover:bg-primary-clay transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full block text-center bg-primary-green text-primary-white py-4 rounded-lg font-semibold hover:bg-primary-clay transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:bg-gray-400"
                 >
-                  Complete Full Application
-                </a>
+                  {isSubmitting ? 'Submitting...' : 'Complete Full Application'}
+                </button>
               </form>
             </div>
           </div>
