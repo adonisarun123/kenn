@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   description: 'A private, purpose-driven community of 100 wellness seekers. For those who seek nature, balance, and belonging.',
   keywords: 'eco estates, wellness community, sustainable living, yoga retreat, mindful living, bangalore',
   authors: [{ name: 'Kenn EcoEstates' }],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/kenn-logo.png',
+  },
   openGraph: {
     title: 'Kenn EcoEstates - Where Clean Living Meets Collective Consciousness',
     description: 'A private, purpose-driven community of 100 wellness seekers.',
