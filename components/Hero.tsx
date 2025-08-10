@@ -41,6 +41,12 @@ export default function Hero() {
               Explore The Vision
             </a>
             <a
+              href="/how-it-works"
+              className="border-2 border-primary-clay text-primary-clay px-8 py-4 rounded-full hover:bg-primary-clay hover:text-primary-white transition-all duration-300 font-semibold"
+            >
+              How It Works
+            </a>
+            <a
               href="/apply"
               className="border-2 border-primary-green text-primary-green px-8 py-4 rounded-full hover:bg-primary-green hover:text-primary-white transition-all duration-300 font-semibold"
             >

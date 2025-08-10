@@ -52,6 +52,11 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href="/how-it-works" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
+                    How It Works
+                  </a>
+                </li>
+                <li>
                   <a href="#mission" className="text-gray-300 hover:text-primary-green transition-colors duration-200">
                     Our Mission
                   </a>

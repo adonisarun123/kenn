@@ -54,6 +54,12 @@ export default function Header() {
               What's Included
             </a>
             <a
+              href="/how-it-works"
+              className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
+            >
+              How It Works
+            </a>
+            <a
               href="/community-guidelines"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
@@ -109,6 +115,13 @@ export default function Header() {
                 onClick={toggleMenu}
               >
                 What's Included
+              </a>
+              <a
+                href="/how-it-works"
+                className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
+                onClick={toggleMenu}
+              >
+                How It Works
               </a>
               <a
                 href="/community-guidelines"
