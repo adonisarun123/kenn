@@ -35,7 +35,7 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 fade-in">
             <a
-              href="#vision"
+              href="/#vision"
               className="bg-primary-green text-primary-white px-8 py-4 rounded-full hover:bg-primary-clay transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Explore The Vision

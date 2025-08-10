@@ -30,25 +30,25 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a
-              href="#vision"
+              href="/#vision"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
               Vision
             </a>
             <a
-              href="#unique"
+              href="/#unique"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
               Unique
             </a>
             <a
-              href="#community"
+              href="/#community"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
               Community
             </a>
             <a
-              href="#included"
+              href="/#included"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
               What's Included
@@ -95,28 +95,28 @@ export default function Header() {
           <div className="md:hidden">
             <nav className="px-2 pt-2 pb-3 space-y-1 bg-primary-white border-t border-primary-mist">
               <a
-                href="#vision"
+                href="/#vision"
                 className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
                 onClick={toggleMenu}
               >
                 Vision
               </a>
               <a
-                href="#unique"
+                href="/#unique"
                 className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
                 onClick={toggleMenu}
               >
                 Unique
               </a>
               <a
-                href="#community"
+                href="/#community"
                 className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
                 onClick={toggleMenu}
               >
                 Community
               </a>
               <a
-                href="#included"
+                href="/#included"
                 className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
                 onClick={toggleMenu}
               >
