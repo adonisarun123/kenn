@@ -17,14 +17,16 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Image
-              src="/kenn-logo.png"
-              alt="Kenn EcoEstates"
-              width={120}
-              height={40}
-              className="w-auto h-8 lg:h-10"
-              priority
-            />
+            <a href="/" className="block">
+              <Image
+                src="/kenn-logo.png"
+                alt="Kenn EcoEstates"
+                width={120}
+                height={40}
+                className="w-auto h-8 lg:h-10 hover:opacity-80 transition-opacity duration-200"
+                priority
+              />
+            </a>
           </div>
 
           {/* Desktop Navigation */}
