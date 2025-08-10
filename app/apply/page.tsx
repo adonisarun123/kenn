@@ -40,6 +40,10 @@ export default function ApplicationForm() {
   const [currentSection, setCurrentSection] = useState(1)
   const [currentMotivation, setCurrentMotivation] = useState(0)
   const [sectionErrors, setSectionErrors] = useState<string[]>([])
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submissionId, setSubmissionId] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const totalSections = 6
 
   const motivationalMessages = [
@@ -102,6 +106,18 @@ export default function ApplicationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    // Validate final section before submission
+    const finalErrors = validateSection(currentSection)
+    setSectionErrors(finalErrors)
+    
+    if (finalErrors.length > 0) {
+      return
+    }
+    
+    setIsSubmitting(true)
+    setSubmissionStatus('idle')
+    setErrorMessage('')
+    
     try {
       const response = await fetch('/api/submit-form', {
         method: 'POST',
@@ -114,18 +130,38 @@ export default function ApplicationForm() {
       const result = await response.json()
       
       if (result.success) {
-        // The form was submitted successfully. The user will be notified by email.
-        // You might want to redirect to a dedicated thank-you page here.
-        // For now, we can just clear the form or show a success message.
-        // The form was submitted successfully. A confirmation email will be sent.
-        // You could redirect to a thank-you page or show a success message here.
+        setSubmissionStatus('success')
+        setSubmissionId(result.id || 'KENN-' + Date.now())
+        // Clear form data for security
+        setFormData({
+          fullName: '',
+          mobile: '',
+          email: '',
+          linkedin: '',
+          wellnessPractices: [],
+          healthExperience: '',
+          wellnessThemes: [],
+          wellnessThemesOther: '',
+          landUsage: '',
+          engagementStyle: '',
+          serviceChargeAgreement: '',
+          financialReadiness: '',
+          sharedInfraSupport: '',
+          skillsContribution: '',
+          referredBy: '',
+          pledge: false,
+          finalThoughts: ''
+        })
       } else {
-        // Handle server-side validation errors or other issues
-        // There was an error with the submission. You could show an error message here.
-        // For example: setFormError(result.error || 'An unknown error occurred.');
+        setSubmissionStatus('error')
+        setErrorMessage(result.error || 'An unknown error occurred. Please try again.')
       }
     } catch (error) {
-      // An unexpected error occurred. You could show a generic error message here.
+      setSubmissionStatus('error')
+      setErrorMessage('Network error. Please check your connection and try again.')
+      console.error('Submission error:', error)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -308,8 +344,65 @@ export default function ApplicationForm() {
             </p>
           </div>
 
+          {/* Success Message */}
+          {submissionStatus === 'success' && (
+            <div className="bg-green-50 border border-green-200 rounded-2xl p-6 mb-8">
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={24} />
+                <div>
+                  <h3 className="text-green-800 font-semibold mb-2">🎉 Application Submitted Successfully!</h3>
+                  <p className="text-green-700 mb-4">
+                    Thank you for your interest in joining our wellness community. Your application has been received and is being reviewed.
+                  </p>
+                  <div className="bg-green-100 rounded-lg p-4 mb-4">
+                    <p className="text-green-800 font-semibold">Unique Submission ID:</p>
+                    <p className="text-green-900 text-lg font-mono bg-white px-3 py-2 rounded border inline-block mt-1">
+                      KENN-{submissionId}
+                    </p>
+                    <p className="text-green-600 text-sm mt-2">Please save this ID for your records</p>
+                  </div>
+                  <div className="space-y-2 text-sm text-green-700">
+                    <p>✅ Confirmation email with 2-page PDF deck will be sent shortly</p>
+                    <p>✅ If shortlisted, you'll receive a Zoom call link within 7 days</p>
+                    <p>✅ Your application is among the first 150 exclusive submissions</p>
+                  </div>
+                  <div className="mt-4">
+                    <Link
+                      href="/"
+                      className="inline-flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors"
+                    >
+                      <span>Return to Homepage</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Error Message */}
+          {submissionStatus === 'error' && (
+            <div className="bg-red-50 border border-red-200 rounded-2xl p-6 mb-8">
+              <div className="flex items-start space-x-3">
+                <AlertCircle className="text-red-500 flex-shrink-0 mt-1" size={24} />
+                <div>
+                  <h3 className="text-red-800 font-semibold mb-2">Submission Failed</h3>
+                  <p className="text-red-700 mb-4">{errorMessage}</p>
+                  <button
+                    onClick={() => {
+                      setSubmissionStatus('idle')
+                      setErrorMessage('')
+                    }}
+                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm"
+                  >
+                    Try Again
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Section Errors */}
-          {sectionErrors.length > 0 && (
+          {sectionErrors.length > 0 && submissionStatus !== 'success' && (
             <div className="bg-red-50 border border-red-200 rounded-2xl p-6 mb-8">
               <div className="flex items-start space-x-3">
                 <AlertCircle className="text-red-500 flex-shrink-0 mt-1" size={24} />
@@ -326,7 +419,8 @@ export default function ApplicationForm() {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="bg-primary-white rounded-3xl p-8 md:p-12 shadow-lg">
+          {submissionStatus !== 'success' && (
+            <form onSubmit={handleSubmit} className="bg-primary-white rounded-3xl p-8 md:p-12 shadow-lg">
             {/* Section 1 - Identity */}
             {currentSection === 1 && (
               <div className="space-y-8">
@@ -756,19 +850,29 @@ export default function ApplicationForm() {
               ) : (
                 <button
                   type="submit"
-                  disabled={!formData.pledge}
+                  disabled={!formData.pledge || isSubmitting}
                   className={`px-8 py-3 rounded-full font-medium transition-all duration-200 flex items-center space-x-2 ${
-                    formData.pledge
+                    formData.pledge && !isSubmitting
                       ? 'bg-primary-green text-primary-white hover:bg-primary-clay shadow-lg hover:shadow-xl transform hover:-translate-y-1'
                       : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                   }`}
                 >
-                  <Send size={20} />
-                  <span>Submit Application</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span>Submitting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={20} />
+                      <span>Submit Application</span>
+                    </>
+                  )}
                 </button>
               )}
             </div>
           </form>
+          )}
         </div>
       </div>
 
