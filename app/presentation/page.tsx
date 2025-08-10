@@ -514,7 +514,7 @@ export default function PresentationPage() {
       {/* Slide Content */}
       <div className={`min-h-screen py-12 ${slides[currentSlide].bgColor || 'bg-primary-white'}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto lg:ml-80">
             {slides[currentSlide].content}
           </div>
         </div>
@@ -563,9 +563,9 @@ export default function PresentationPage() {
       </div>
 
       {/* Slide Titles Sidebar - Hidden on mobile */}
-      <div className="hidden lg:block fixed left-4 top-1/2 transform -translate-y-1/2 bg-primary-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-primary-mist max-w-xs">
+      <div className="hidden lg:block fixed left-4 top-32 w-72 bg-primary-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-primary-mist z-40">
         <h3 className="font-bold text-primary-black mb-4">Presentation Outline</h3>
-        <div className="space-y-2">
+        <div className="space-y-2 max-h-96 overflow-y-auto">
           {slides.map((slide, index) => (
             <button
               key={slide.id}
