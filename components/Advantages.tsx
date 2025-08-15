@@ -136,10 +136,10 @@ export default function Advantages() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="/presentation"
+                  href="/how-it-works"
                   className="bg-primary-white text-primary-green px-8 py-4 rounded-full hover:bg-primary-mist transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  📖 Learn More - Detailed Presentation
+                  📚 Learn More - How It Works
                 </a>
                 <a
                   href="/apply"

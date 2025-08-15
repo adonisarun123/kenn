@@ -1,43 +1,71 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, ChevronRight, ArrowRight, Users, Shield, Vote, Building, Heart, TreePine, CheckCircle, Calendar, MapPin, DollarSign, FileText, Key } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ArrowRight, Users, Shield, Vote, Building, Heart, TreePine, CheckCircle, Calendar, MapPin, DollarSign, FileText, Key, Target, Lightbulb, Home } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Link from 'next/link'
 
-const slides = [
+const sections = [
   {
-    id: 1,
+    id: 'welcome',
     title: "Welcome to Kenn EcoEstates",
-    subtitle: "Your Journey to Wellness Living Starts Here",
-    content: "Discover how we're revolutionizing community living through our unique land trust model, transparent governance, and wellness-focused infrastructure.",
-    icon: <Heart className="text-primary-green" size={64} />,
+    subtitle: "Where Clean Living Meets Collective Consciousness",
+    icon: <Heart className="text-primary-green" size={48} />,
+    content: "A comprehensive journey through India's first ultra-premium, wellness-driven land community designed for health-conscious achievers.",
     highlights: [
       "Ultra-premium wellness community",
       "100 carefully selected families",
       "30-acre pristine land near Bangalore",
       "Private land trust ownership model"
-    ]
+    ],
+    bgColor: "bg-gradient-to-br from-primary-white via-primary-mist/30 to-primary-white"
   },
   {
-    id: 2,
-    title: "Step 1: Understanding the Vision",
-    subtitle: "More Than Land Ownership - It's Community Building",
-    content: "Kenn EcoEstates isn't just real estate. It's a carefully curated ecosystem where health-conscious achievers come together to build a legacy of wellness and purposeful living.",
-    icon: <TreePine className="text-primary-green" size={64} />,
-    highlights: [
-      "Health-first community design",
-      "Shared values and vision",
-      "Sustainable living practices",
-      "Long-term community legacy"
-    ]
+    id: 'problem',
+    title: "The Urban Challenge",
+    subtitle: "Understanding the Problem We're Solving",
+    icon: <Target className="text-primary-clay" size={48} />,
+    content: "Modern urban living presents unique challenges for health-conscious professionals seeking meaningful community and wellness-focused lifestyle.",
+    challenges: [
+      { title: "Pollution & Noise", desc: "City air quality deteriorating, constant noise affecting mental health", icon: "🏭" },
+      { title: "Stress & Burnout", desc: "High-achievers struggling with work-life balance and purpose", icon: "😰" },
+      { title: "Expensive Club Memberships", desc: "₹60+ Lakhs for access without ownership or long-term value", icon: "🏠" },
+      { title: "Lack of Community", desc: "Difficulty finding like-minded individuals with shared values", icon: "🤝" }
+    ],
+    bgColor: "bg-gradient-to-br from-gray-50 to-white"
   },
   {
-    id: 3,
-    title: "Step 2: The Application Process",
+    id: 'solution',
+    title: "Our Comprehensive Solution",
+    subtitle: "More Than Land Ownership - Complete Lifestyle Transformation",
+    icon: <Lightbulb className="text-primary-green" size={48} />,
+    content: "Kenn EcoEstates offers a holistic solution combining land ownership, community governance, wellness infrastructure, and exclusive lifestyle.",
+    solutionAreas: [
+      { title: "Land Ownership", desc: "10,000 sq ft individual plots within 30-acre community", icon: <MapPin className="text-primary-green" size={24} /> },
+      { title: "Democratic Governance", desc: "0.5% voting rights per plot owner with transparent decision-making", icon: <Vote className="text-primary-clay" size={24} /> },
+      { title: "Wellness Infrastructure", desc: "Open-air gyms, trails, gardens, and curated wellness programs", icon: <Building className="text-primary-green" size={24} /> },
+      { title: "Exclusive Community", desc: "Limited to 100 families with 5-year no-resale policy", icon: <Users className="text-primary-clay" size={24} /> }
+    ],
+    bgColor: "bg-gradient-to-br from-primary-white via-primary-mist/20 to-primary-white"
+  },
+  {
+    id: 'process',
+    title: "The Step-by-Step Journey",
+    subtitle: "Your Path to Wellness Community Membership",
+    icon: <TreePine className="text-primary-green" size={48} />,
+    content: "A carefully designed process ensuring alignment with our values and vision for sustainable wellness living.",
+    bgColor: "bg-gradient-to-br from-blue-50 via-white to-green-50"
+  }
+]
+
+const processSteps = [
+  {
+    id: 1,
+    title: "Application & Vision Alignment",
     subtitle: "Joining Our Exclusive Community",
-    content: "Our selective application process ensures that every member shares our commitment to wellness, community values, and sustainable living.",
-    icon: <FileText className="text-primary-clay" size={64} />,
+    content: "Submit comprehensive application demonstrating alignment with wellness values and community vision.",
+    icon: <FileText className="text-primary-clay" size={40} />,
     highlights: [
       "Comprehensive application form",
       "Background and vision alignment check",
@@ -46,11 +74,11 @@ const slides = [
     ]
   },
   {
-    id: 4,
-    title: "Step 3: Land Trust Ownership",
+    id: 2,
+    title: "Land Trust Ownership",
     subtitle: "Revolutionary Ownership Model",
-    content: "Unlike traditional real estate, our private land trust model ensures collective ownership, democratic governance, and protection from commercialization.",
-    icon: <Shield className="text-primary-green" size={64} />,
+    content: "Unlike traditional real estate, our private land trust ensures collective ownership and democratic governance.",
+    icon: <Shield className="text-primary-green" size={40} />,
     highlights: [
       "Private land trust structure",
       "Collective ownership benefits",
@@ -59,11 +87,11 @@ const slides = [
     ]
   },
   {
-    id: 5,
-    title: "Step 4: Your Land Parcel",
-    subtitle: "10,000 Sq Ft of Wellness Paradise",
-    content: "Each family receives a thoughtfully planned 10,000 sq ft land parcel within our 30-acre community, perfect for building your wellness retreat.",
-    icon: <MapPin className="text-primary-clay" size={64} />,
+    id: 3,
+    title: "Your 10,000 Sq Ft Parcel",
+    subtitle: "Personal Wellness Paradise",
+    content: "Each family receives a thoughtfully planned land parcel within our 30-acre community ecosystem.",
+    icon: <MapPin className="text-primary-clay" size={40} />,
     highlights: [
       "10,000 sq ft individual parcel",
       "Premium location selection",
@@ -72,11 +100,11 @@ const slides = [
     ]
   },
   {
-    id: 6,
-    title: "Step 5: Democratic Governance",
-    subtitle: "Your Voice Matters in Every Decision",
-    content: "As a land owner, you receive 0.5% voting rights in all community decisions, ensuring transparent and democratic governance of our shared spaces and policies.",
-    icon: <Vote className="text-primary-green" size={64} />,
+    id: 4,
+    title: "Democratic Governance",
+    subtitle: "Your Voice in Every Decision",
+    content: "0.5% voting rights per plot owner ensuring transparent and democratic community governance.",
+    icon: <Vote className="text-primary-green" size={40} />,
     highlights: [
       "0.5% voting rights per plot",
       "Democratic decision making",
@@ -85,11 +113,11 @@ const slides = [
     ]
   },
   {
-    id: 7,
-    title: "Step 6: Shared Infrastructure",
-    subtitle: "Premium Wellness Amenities for All",
-    content: "Access world-class wellness infrastructure including open-air gyms, walking trails, kitchen gardens, and curated wellness programs designed for holistic health.",
-    icon: <Building className="text-primary-clay" size={64} />,
+    id: 5,
+    title: "Shared Wellness Infrastructure",
+    subtitle: "Premium Amenities for Holistic Health",
+    content: "Access world-class wellness facilities designed for comprehensive mind, body, and spirit wellness.",
+    icon: <Building className="text-primary-clay" size={40} />,
     highlights: [
       "Open-air fitness facilities",
       "Nature walking trails",
@@ -98,24 +126,11 @@ const slides = [
     ]
   },
   {
-    id: 8,
-    title: "Step 7: Community Guidelines",
-    subtitle: "Maintaining Our Shared Values",
-    content: "Structured guidelines ensure our community maintains its wellness focus, environmental sustainability, and quality standards for generations to come.",
-    icon: <CheckCircle className="text-primary-green" size={64} />,
-    highlights: [
-      "Architecture and design standards",
-      "Environmental sustainability rules",
-      "Community behavior guidelines",
-      "Wellness-focused regulations"
-    ]
-  },
-  {
-    id: 9,
-    title: "Step 8: Transparent Investment",
+    id: 6,
+    title: "Transparent Investment",
     subtitle: "10% Flat Service Charge - No Hidden Costs",
-    content: "Our transparent pricing model eliminates agents, commissions, and hidden markups. Pay only a 10% service charge for complete community development and management.",
-    icon: <DollarSign className="text-primary-clay" size={64} />,
+    content: "Transparent pricing eliminates agents, commissions, and hidden markups with complete cost clarity.",
+    icon: <DollarSign className="text-primary-green" size={40} />,
     highlights: [
       "10% flat service charge only",
       "No agent commissions",
@@ -124,11 +139,11 @@ const slides = [
     ]
   },
   {
-    id: 10,
-    title: "Step 9: Building Your Dreams",
+    id: 7,
+    title: "Building Your Dreams",
     subtitle: "Creating Your Wellness Sanctuary",
-    content: "Once you're part of the community, work with our approved architects and builders to create your dream wellness home following our community guidelines.",
-    icon: <Key className="text-primary-green" size={64} />,
+    content: "Work with approved architects and builders to create your dream wellness home following community guidelines.",
+    icon: <Key className="text-primary-clay" size={40} />,
     highlights: [
       "Approved architect network",
       "Sustainable building practices",
@@ -137,11 +152,11 @@ const slides = [
     ]
   },
   {
-    id: 11,
-    title: "Step 10: Lifetime Community",
+    id: 8,
+    title: "Lifetime Community",
     subtitle: "Your Forever Wellness Family",
-    content: "Enjoy lifetime membership in an exclusive community of like-minded individuals, with ongoing wellness programs, events, and the satisfaction of building something meaningful together.",
-    icon: <Users className="text-primary-clay" size={64} />,
+    content: "Enjoy lifetime membership with ongoing wellness programs, events, and meaningful legacy building.",
+    icon: <Users className="text-primary-green" size={40} />,
     highlights: [
       "Lifetime community membership",
       "Regular wellness events",
@@ -151,89 +166,226 @@ const slides = [
   }
 ]
 
+const advantages = [
+  {
+    title: "Clear Purpose & Vision",
+    description: "Ultra-premium, wellness-driven community specifically designed for urban professionals seeking health-centric lifestyle",
+    icon: "🎯"
+  },
+  {
+    title: "Unique Ownership Model",
+    description: "Private land trust with democratic governance, voting rights, and transparent 10% flat service charge",
+    icon: "🗳️"
+  },
+  {
+    title: "Robust Wellness Infrastructure",
+    description: "Comprehensive amenities reinforcing health-first ethos with curated wellness programs",
+    icon: "🏃‍♂️"
+  },
+  {
+    title: "Premium Branding Experience",
+    description: "Evocative narrative focused on wellness, purpose, and community for emotionally compelling experience",
+    icon: "✨"
+  },
+  {
+    title: "Strong Exclusivity",
+    description: "Limited to 100 health-conscious families with charter privileges and 5-year no-resale policy",
+    icon: "👑"
+  }
+]
+
 export default function HowItWorks() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [activeStep, setActiveStep] = useState(0)
+  const [activeSection, setActiveSection] = useState('welcome')
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId)
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
   }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-  }
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
-
-  const currentSlideData = slides[currentSlide]
 
   return (
-    <div className="min-h-screen bg-primary-mist">
+    <div className="min-h-screen bg-primary-white">
       <Header />
       
       {/* Hero Section */}
-      <section className="py-20 bg-primary-green text-primary-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            How It Works
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90 max-w-4xl mx-auto">
-            A step-by-step guide to joining Kenn EcoEstates and becoming part of India's most exclusive wellness community
-          </p>
+      <section id="welcome" className="py-20 bg-gradient-to-r from-primary-green to-primary-clay text-primary-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center mb-8">
+              <Heart className="text-primary-white" size={80} />
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              How It Works
+            </h1>
+            <p className="text-2xl md:text-3xl opacity-90 mb-8">
+              Where Clean Living Meets Collective Consciousness
+            </p>
+            <p className="text-xl opacity-80 max-w-3xl mx-auto leading-relaxed">
+              A comprehensive guide to joining Kenn EcoEstates and becoming part of India's most exclusive wellness community
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Slide Presentation */}
-      <section className="py-20">
+      {/* Quick Navigation */}
+      <section className="py-12 bg-primary-mist/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            
-            {/* Progress Bar */}
-            <div className="mb-12">
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-sm font-medium text-primary-sage">
-                  Step {currentSlide + 1} of {slides.length}
-                </span>
-                <span className="text-sm font-medium text-primary-sage">
-                  {Math.round(((currentSlide + 1) / slides.length) * 100)}% Complete
-                </span>
+            <h2 className="text-3xl font-bold text-primary-black text-center mb-8">Journey Overview</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {sections.map((section) => (
+                <button
+                  key={section.id}
+                  onClick={() => scrollToSection(section.id)}
+                  className={`p-4 rounded-2xl text-center transition-all duration-300 ${
+                    activeSection === section.id
+                      ? 'bg-primary-green text-primary-white shadow-lg scale-105'
+                      : 'bg-primary-white text-primary-black hover:bg-primary-green hover:text-primary-white shadow-md'
+                  }`}
+                >
+                  <div className="flex justify-center mb-2">{section.icon}</div>
+                  <div className="text-sm font-semibold">{section.title}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <section id="problem" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="flex justify-center mb-6">
+                <Target className="text-primary-clay" size={60} />
               </div>
-              <div className="w-full bg-primary-white rounded-full h-2">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary-black mb-6">The Urban Challenge</h2>
+              <p className="text-xl text-primary-sage max-w-3xl mx-auto">
+                Understanding the challenges that drive successful professionals to seek wellness-focused community living
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {sections[1].challenges?.map((challenge, index) => (
+                <div key={index} className="bg-primary-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="flex items-center mb-4">
+                    <span className="text-4xl mr-4">{challenge.icon}</span>
+                    <h3 className="text-2xl font-bold text-primary-black">{challenge.title}</h3>
+                  </div>
+                  <p className="text-primary-sage leading-relaxed">{challenge.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solution Overview */}
+      <section id="solution" className="py-20 bg-gradient-to-br from-primary-white via-primary-mist/20 to-primary-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="flex justify-center mb-6">
+                <Lightbulb className="text-primary-green" size={60} />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary-black mb-6">Our Comprehensive Solution</h2>
+              <p className="text-xl text-primary-sage max-w-3xl mx-auto">
+                More than land ownership - a complete lifestyle transformation through community, wellness, and purpose
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {sections[2].solutionAreas?.map((area, index) => (
+                <div key={index} className="bg-primary-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-primary-mist hover:border-primary-green/30">
+                  <div className="flex items-center mb-6">
+                    <div className="w-16 h-16 bg-primary-mist rounded-2xl flex items-center justify-center mr-4">
+                      {area.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-primary-black">{area.title}</h3>
+                  </div>
+                  <p className="text-primary-sage leading-relaxed">{area.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Step-by-Step Process */}
+      <section id="process" className="py-20 bg-gradient-to-br from-blue-50 via-white to-green-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="flex justify-center mb-6">
+                <TreePine className="text-primary-green" size={60} />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary-black mb-6">Your Step-by-Step Journey</h2>
+              <p className="text-xl text-primary-sage max-w-3xl mx-auto">
+                A carefully designed process ensuring alignment with our values and vision for sustainable wellness living
+              </p>
+            </div>
+
+            {/* Interactive Step Navigation */}
+            <div className="mb-12">
+              <div className="flex flex-wrap justify-center gap-2 mb-8">
+                {processSteps.map((step, index) => (
+                  <button
+                    key={step.id}
+                    onClick={() => setActiveStep(index)}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                      index === activeStep
+                        ? 'bg-primary-green text-primary-white shadow-lg'
+                        : 'bg-primary-white text-primary-sage hover:bg-primary-mist'
+                    }`}
+                  >
+                    Step {step.id}
+                  </button>
+                ))}
+              </div>
+
+              {/* Progress Bar */}
+              <div className="w-full bg-primary-mist rounded-full h-2 mb-8">
                 <div 
-                  className="bg-primary-green h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
-                ></div>
+                  className="bg-primary-green h-2 rounded-full transition-all duration-500"
+                  style={{ width: `${((activeStep + 1) / processSteps.length) * 100}%` }}
+                />
               </div>
             </div>
 
-            {/* Main Slide */}
+            {/* Active Step Display */}
             <div className="bg-primary-white rounded-3xl shadow-xl overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
-                
+              <div className="grid grid-cols-1 lg:grid-cols-2">
                 {/* Content Side */}
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="mb-8 flex justify-center lg:justify-start">
-                    {currentSlideData.icon}
+                    {processSteps[activeStep].icon}
                   </div>
                   
-                  <h2 className="text-3xl md:text-4xl font-bold text-primary-black mb-4">
-                    {currentSlideData.title}
-                  </h2>
+                  <div className="text-sm font-semibold text-primary-green mb-2">
+                    STEP {processSteps[activeStep].id} OF {processSteps.length}
+                  </div>
                   
-                  <h3 className="text-xl text-primary-clay font-semibold mb-6">
-                    {currentSlideData.subtitle}
+                  <h3 className="text-3xl md:text-4xl font-bold text-primary-black mb-4">
+                    {processSteps[activeStep].title}
                   </h3>
                   
+                  <h4 className="text-xl text-primary-clay font-semibold mb-6">
+                    {processSteps[activeStep].subtitle}
+                  </h4>
+                  
                   <p className="text-lg text-primary-sage leading-relaxed mb-8">
-                    {currentSlideData.content}
+                    {processSteps[activeStep].content}
                   </p>
 
                   {/* Navigation Buttons */}
                   <div className="flex gap-4">
                     <button
-                      onClick={prevSlide}
-                      disabled={currentSlide === 0}
+                      onClick={() => setActiveStep(Math.max(0, activeStep - 1))}
+                      disabled={activeStep === 0}
                       className="flex items-center gap-2 px-6 py-3 bg-primary-mist text-primary-black rounded-xl font-semibold hover:bg-primary-sage hover:text-primary-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <ChevronLeft size={20} />
@@ -241,8 +393,8 @@ export default function HowItWorks() {
                     </button>
                     
                     <button
-                      onClick={nextSlide}
-                      disabled={currentSlide === slides.length - 1}
+                      onClick={() => setActiveStep(Math.min(processSteps.length - 1, activeStep + 1))}
+                      disabled={activeStep === processSteps.length - 1}
                       className="flex items-center gap-2 px-6 py-3 bg-primary-green text-primary-white rounded-xl font-semibold hover:bg-primary-clay transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Next
@@ -258,7 +410,7 @@ export default function HowItWorks() {
                   </h4>
                   
                   <div className="space-y-4">
-                    {currentSlideData.highlights.map((highlight, index) => (
+                    {processSteps[activeStep].highlights.map((highlight, index) => (
                       <div key={index} className="flex items-start gap-4">
                         <CheckCircle className="text-primary-green flex-shrink-0 mt-1" size={20} />
                         <span className="text-primary-black font-medium">
@@ -268,63 +420,177 @@ export default function HowItWorks() {
                     ))}
                   </div>
 
-                  {/* CTA for last slide */}
-                  {currentSlide === slides.length - 1 && (
+                  {/* CTA for last step */}
+                  {activeStep === processSteps.length - 1 && (
                     <div className="mt-8 pt-8 border-t border-primary-sage/20">
-                      <a
+                      <Link
                         href="/apply"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-primary-green text-primary-white rounded-xl font-bold hover:bg-primary-clay transition-colors"
                       >
                         Start Your Application
                         <ArrowRight size={20} />
-                      </a>
+                      </Link>
                     </div>
                   )}
                 </div>
               </div>
             </div>
 
-            {/* Slide Indicators */}
-            <div className="flex justify-center mt-12 gap-2">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentSlide 
-                      ? 'bg-primary-green' 
-                      : 'bg-primary-sage/30 hover:bg-primary-sage/50'
-                  }`}
-                />
-              ))}
-            </div>
-
-            {/* Quick Navigation */}
+            {/* All Steps Overview */}
             <div className="mt-16 bg-primary-white rounded-3xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-primary-black mb-8 text-center">
-                Quick Navigation
+                Complete Journey Overview
               </h3>
               
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {slides.map((slide, index) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {processSteps.map((step, index) => (
                   <button
-                    key={slide.id}
-                    onClick={() => goToSlide(index)}
-                    className={`p-4 rounded-xl text-left transition-colors ${
-                      index === currentSlide
-                        ? 'bg-primary-green text-primary-white'
+                    key={step.id}
+                    onClick={() => setActiveStep(index)}
+                    className={`p-6 rounded-xl text-left transition-all duration-300 ${
+                      index === activeStep
+                        ? 'bg-primary-green text-primary-white transform scale-105'
                         : 'bg-primary-mist text-primary-black hover:bg-primary-sage hover:text-primary-white'
                     }`}
                   >
-                    <div className="text-sm font-bold mb-1">
-                      Step {index + 1}
+                    <div className="flex items-center mb-4">
+                      {step.icon}
+                      <span className="ml-3 text-sm font-bold">Step {step.id}</span>
                     </div>
-                    <div className="text-xs opacity-90">
-                      {slide.title.replace(/^Step \d+: /, '')}
+                    <div className="text-sm font-semibold">
+                      {step.title}
                     </div>
                   </button>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Kenn EcoEstates is Different */}
+      <section className="py-20 bg-gradient-to-br from-yellow-50 via-white to-primary-mist/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary-black mb-6">Why We're Different</h2>
+              <p className="text-xl text-primary-sage max-w-3xl mx-auto">
+                Discover the unique advantages that make Kenn EcoEstates more than just land ownership
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {advantages.map((advantage, index) => (
+                <div key={index} className="bg-primary-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-primary-mist hover:border-primary-green/30">
+                  <div className="text-4xl mb-4 text-center">{advantage.icon}</div>
+                  <h3 className="text-xl font-bold text-primary-black mb-4 text-center">{advantage.title}</h3>
+                  <p className="text-primary-sage text-center leading-relaxed">{advantage.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Financial Transparency */}
+      <section className="py-20 bg-gradient-to-br from-green-50 via-white to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center mb-8">
+              <DollarSign className="text-primary-clay" size={60} />
+            </div>
+            <h2 className="text-4xl font-bold text-primary-black mb-6">Transparent Investment</h2>
+            <p className="text-xl text-primary-sage mb-12">
+              Clear pricing with no hidden costs - just 10% flat service charge
+            </p>
+
+            <div className="bg-primary-white rounded-3xl p-8 shadow-xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold text-primary-green mb-6">What's Included</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center">
+                      <CheckCircle className="text-primary-green mr-3" size={20} />
+                      <span className="text-primary-sage">10,000 sq ft land parcel</span>
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="text-primary-green mr-3" size={20} />
+                      <span className="text-primary-sage">Community infrastructure</span>
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="text-primary-green mr-3" size={20} />
+                      <span className="text-primary-sage">Wellness amenities access</span>
+                    </div>
+                    <div className="flex items-center">
+                      <CheckCircle className="text-primary-green mr-3" size={20} />
+                      <span className="text-primary-sage">Democratic voting rights</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl font-bold text-primary-clay mb-6">What's Not</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center">
+                      <span className="text-red-500 mr-3">✗</span>
+                      <span className="text-primary-sage">Agent commissions</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="text-red-500 mr-3">✗</span>
+                      <span className="text-primary-sage">Hidden markups</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="text-red-500 mr-3">✗</span>
+                      <span className="text-primary-sage">Broker fees</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="text-red-500 mr-3">✗</span>
+                      <span className="text-primary-sage">Surprise charges</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-20 bg-gradient-to-r from-primary-green to-primary-clay text-primary-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Begin Your Journey?</h2>
+          <p className="text-xl opacity-90 mb-12 max-w-3xl mx-auto">
+            Join an exclusive community of 100 health-conscious families building something extraordinary together
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-lg mx-auto">
+            <Link
+              href="/apply"
+              className="flex-1 bg-primary-white text-primary-green px-8 py-4 rounded-full hover:bg-primary-mist transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center"
+            >
+              <FileText className="mr-2" size={20} />
+              Start Application
+            </Link>
+            <Link
+              href="/"
+              className="flex-1 border-2 border-primary-white text-primary-white px-8 py-4 rounded-full hover:bg-primary-white hover:text-primary-green transition-all duration-300 font-bold flex items-center justify-center"
+            >
+              <Home className="mr-2" size={20} />
+              Back to Home
+            </Link>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">100</div>
+              <div className="text-lg opacity-80">Exclusive Families</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">30</div>
+              <div className="text-lg opacity-80">Acres of Wellness</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">150km</div>
+              <div className="text-lg opacity-80">From Bangalore</div>
             </div>
           </div>
         </div>
