@@ -146,10 +146,13 @@ const faqs: FAQItem[] = [
     answer: (
       <div className="space-y-4">
         <p>
-          You may sell at any time to a buyer who signs the same Stewardship Covenant. Kenn EcoEstates retains a right of first refusal for 30 days to keep community culture intact.
+          To ensure the development of a strong, committed community, there is a mandatory 5-year lock-in period before any resale is permitted. This policy helps build lasting relationships and ensures members are invested in the community's long-term success.
         </p>
         <p>
-          Historically, plots have appreciated 12–15% CAGR because of the built-in organic premium.
+          After the lock-in period, you may sell to a buyer who aligns with our community values and signs the same Stewardship Covenant. Kenn EcoEstates retains a right of first refusal for 30 days to maintain community integrity.
+        </p>
+        <p>
+          This community-first approach has proven beneficial for all members—historically, plots have appreciated 12–15% CAGR due to our built-in organic premium and strong community foundation.
         </p>
       </div>
     ),
