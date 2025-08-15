@@ -1,0 +1,19 @@
+# Allow all web crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://kennecoestates.com/sitemap.xml
+
+# Important pages to crawl
+Allow: /how-it-works
+Allow: /apply
+Allow: /community-guidelines
+Allow: /faq
+Allow: /blog
+Allow: /blog/*
+
+# Prevent crawling of admin or private areas if they exist
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
