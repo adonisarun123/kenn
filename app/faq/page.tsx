@@ -39,7 +39,7 @@ const faqs: FAQItem[] = [
     category: "Legal & Ownership"
   },
   {
-    question: "What exactly is included in the "turn-key" model?",
+    question: "What exactly is included in the \"turn-key\" model?",
     answer: (
       <div className="space-y-4">
         <ul className="list-disc pl-6 space-y-2">
