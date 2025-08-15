@@ -62,6 +62,12 @@ export default function Header() {
               How It Works
             </a>
             <a
+              href="/blog"
+              className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
+            >
+              Blog
+            </a>
+            <a
               href="/community-guidelines"
               className="text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
             >
@@ -124,6 +130,13 @@ export default function Header() {
                 onClick={toggleMenu}
               >
                 How It Works
+              </a>
+              <a
+                href="/blog"
+                className="block px-3 py-2 text-primary-sage hover:text-primary-green transition-colors duration-200 font-medium"
+                onClick={toggleMenu}
+              >
+                Blog
               </a>
               <a
                 href="/community-guidelines"
