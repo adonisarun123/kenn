@@ -1,19 +1,21 @@
-# Allow all web crawlers
+# https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemaps
 Sitemap: https://kennecoestates.com/sitemap.xml
 
-# Important pages to crawl
-Allow: /how-it-works
-Allow: /apply
-Allow: /community-guidelines
-Allow: /faq
-Allow: /blog
-Allow: /blog/*
-
-# Prevent crawling of admin or private areas if they exist
-Disallow: /admin/
-Disallow: /private/
+# Disallow admin and API routes
 Disallow: /api/
+Disallow: /admin/
+
+# Allow crawling of important sections
+Allow: /blog/
+Allow: /how-it-works/
+Allow: /apply/
+Allow: /community-guidelines/
+Allow: /faq/
+
+# Crawl-delay to prevent server overload
+Crawl-delay: 1
