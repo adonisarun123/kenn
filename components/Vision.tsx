@@ -38,7 +38,7 @@ export default function Vision() {
               
               <div className="bg-primary-white rounded-2xl p-6 border-l-4 border-primary-green">
                 <p className="text-lg md:text-xl text-primary-black font-bold italic leading-relaxed">
-                  <span className="text-primary-green">10,000 sq ft land ownership</span> within a 30-acre, health-first community
+                  <span className="text-primary-green">10,000 sq ft land ownership</span> within a 30+-acre, health-first community
                 </p>
                 <p className="text-primary-sage mt-2">
                   Located within <span className="font-semibold">150 km of Bangalore</span>, yet far from pollution, noise, and clutter.

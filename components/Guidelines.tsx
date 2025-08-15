@@ -5,7 +5,7 @@ export default function WhatsIncluded() {
     {
       icon: <CheckCircle className="text-primary-green" size={40} />,
       title: "10,000 sq ft Land Parcel",
-      description: "Complete ownership of your individual land parcel within the 30-acre community — build your dream wellness retreat."
+      description: "Complete ownership of your individual land parcel within the 30+-acre community — build your dream wellness retreat."
     },
     {
       icon: <Vote className="text-primary-clay" size={40} />,

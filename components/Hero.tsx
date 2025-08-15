@@ -21,7 +21,7 @@ export default function Hero() {
 
           {/* Key stats */}
           <div className="text-xl md:text-3xl font-semibold text-primary-green mb-8 slide-in-left">
-            30 Acres • 100 Wellness-Driven Families • 1 Purpose
+            30+ Acres • 100 Wellness-Driven Families • 1 Purpose
           </div>
 
           {/* Value proposition */}

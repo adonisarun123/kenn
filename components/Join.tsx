@@ -136,7 +136,7 @@ export default function Join() {
             <div className="bg-primary-green text-primary-white rounded-3xl p-8 text-center shadow-lg">
               <Crown className="mx-auto mb-4" size={48} />
               <h3 className="font-bold text-xl mb-3">Priority Plot Allocation</h3>
-              <p className="opacity-90 leading-relaxed">First choice on the best-located plots within the 30-acre community — prime positions with optimal views and accessibility.</p>
+              <p className="opacity-90 leading-relaxed">First choice on the best-located plots within the 30+-acre community — prime positions with optimal views and accessibility.</p>
             </div>
             
             <div className="bg-primary-white border-2 border-primary-green rounded-3xl p-8 text-center shadow-lg">

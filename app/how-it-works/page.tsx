@@ -16,7 +16,7 @@ const sections = [
     highlights: [
       "Ultra-premium wellness community",
       "100 carefully selected families",
-      "30-acre pristine land near Bangalore",
+      "30+-acre pristine land near Bangalore",
       "Private land trust ownership model"
     ],
     bgColor: "bg-gradient-to-br from-primary-white via-primary-mist/30 to-primary-white"
@@ -42,7 +42,7 @@ const sections = [
     icon: <Lightbulb className="text-primary-green" size={48} />,
     content: "Kenn EcoEstates offers a holistic solution combining land ownership, community governance, wellness infrastructure, and exclusive lifestyle.",
     solutionAreas: [
-      { title: "Land Ownership", desc: "10,000 sq ft individual plots within 30-acre community", icon: <MapPin className="text-primary-green" size={24} /> },
+      { title: "Land Ownership", desc: "10,000 sq ft individual plots within 30+-acre community", icon: <MapPin className="text-primary-green" size={24} /> },
       { title: "Democratic Governance", desc: "0.5% voting rights per plot owner with transparent decision-making", icon: <Vote className="text-primary-clay" size={24} /> },
       { title: "Wellness Infrastructure", desc: "Open-air gyms, trails, gardens, and curated wellness programs", icon: <Building className="text-primary-green" size={24} /> },
       { title: "Exclusive Community", desc: "Limited to 100 families with 5-year no-resale policy", icon: <Users className="text-primary-clay" size={24} /> }
@@ -90,7 +90,7 @@ const processSteps = [
     id: 3,
     title: "Your 10,000 Sq Ft Parcel",
     subtitle: "Personal Wellness Paradise",
-    content: "Each family receives a thoughtfully planned land parcel within our 30-acre community ecosystem.",
+    content: "Each family receives a thoughtfully planned land parcel within our 30+-acre community ecosystem.",
     icon: <MapPin className="text-primary-clay" size={40} />,
     highlights: [
       "10,000 sq ft individual parcel",

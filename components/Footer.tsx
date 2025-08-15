@@ -20,7 +20,7 @@ export default function Footer() {
               </div>
               <p className="text-gray-300 leading-relaxed mb-6">
                 A curated, ultra-premium wellness community co-created by health-conscious achievers. 
-                30 Acres • 100 Families • 1 Purpose.
+                30+ Acres • 100 Families • 1 Purpose.
               </p>
               <p className="text-primary-green font-semibold text-lg italic">
                 Where Wellness Finds Land
